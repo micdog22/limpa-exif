@@ -1,0 +1,11 @@
+{
+  "name": "limpa-exif",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Remova a localização (GPS) e outros metadados de fotos JPEG e PNG antes de compartilhar, direto no navegador.",
+  "type": "module",
+  "scripts": { "test": "node --test" },
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/micdog22/limpa-exif.git" },
+  "homepage": "https://micdog22.github.io/limpa-exif/"
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Limpa EXIF — remova a localização e outros metadados das suas fotos</title>
+  <meta name="description" content="Veja e remova a localização (GPS), o modelo da câmera, a data e outros metadados de fotos JPEG e PNG antes de compartilhar. Tudo roda no seu navegador.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧽</text></svg>">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Limpa EXIF</h1>
+    <p class="lead">Remova a localização e outros metadados das suas fotos antes de compartilhar.</p>
+  </header>
+
+  <main>
+    <p class="local-note">
+      <strong>Tudo acontece no seu navegador.</strong>
+      As fotos não são enviadas para nenhum servidor: a leitura e a limpeza rodam aqui mesmo, no seu aparelho.
+    </p>
+
+    <section class="card" aria-labelledby="pick-title">
+      <h2 id="pick-title">1. Escolha as fotos</h2>
+      <div class="dropzone" id="dropzone">
+        <p class="dropzone-title">Arraste fotos JPEG ou PNG para cá</p>
+        <p class="muted">ou</p>
+        <input type="file" id="file-input" class="visually-hidden" multiple
+               accept=".jpg,.jpeg,.jpe,.jfif,.png,image/jpeg,image/png">
+        <label for="file-input" class="btn">Escolher fotos</label>
+        <p class="muted small">Pode escolher várias de uma vez.</p>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card" aria-labelledby="results-title">
+      <div class="results-head">
+        <h2 id="results-title">2. Confira e baixe as cópias limpas</h2>
+        <div class="actions">
+          <button type="button" class="btn" id="download-all" disabled>Baixar todas (.zip)</button>
+          <button type="button" class="btn secondary" id="clear" disabled>Limpar lista</button>
+        </div>
+      </div>
+      <ul id="results" class="results" aria-live="polite"></ul>
+    </section>
+
+    <section class="card explain" aria-labelledby="how-title">
+      <h2 id="how-title">O que é removido e por quê</h2>
+      <p>
+        Fotos de celular e de câmera guardam <strong>metadados</strong>: as coordenadas de GPS de onde foram tiradas,
+        o modelo do aparelho, a data e a hora, o programa usado e, às vezes, o nome do dono e o número de série da câmera.
+        Nem todo site ou aplicativo apaga esses dados quando você envia a foto, principalmente quando ela vai como arquivo.
+      </p>
+      <ul>
+        <li>
+          <strong>JPEG, sem perder qualidade:</strong> a imagem não é recomprimida. Saem os blocos APP1 (Exif e XMP),
+          APP13 (IPTC/Photoshop), APP2 que não sejam perfil de cor (como FPXR e MPF), os comentários (COM) e outros blocos APP.
+          Ficam o JFIF (APP0), o bloco Adobe (APP14), o perfil de cor ICC e todos os dados da imagem.
+        </li>
+        <li>
+          <strong>Orientação:</strong> se a foto estava marcada como girada, a cópia ganha um Exif mínimo só com a orientação,
+          para não aparecer deitada.
+        </li>
+        <li>
+          <strong>PNG:</strong> saem os blocos de texto (tEXt, zTXt, iTXt), eXIf e tIME. Ficam os blocos essenciais e os de cor,
+          transparência e animação (iCCP, sRGB, gAMA, cHRM, pHYs, tRNS e outros).
+        </li>
+        <li>
+          <strong>Dados escondidos no fim do arquivo</strong>, depois do término da imagem (alguns aparelhos guardam ali
+          vídeos curtos ou imagens auxiliares), também são removidos.
+        </li>
+      </ul>
+      <p class="muted">
+        Atenção: o conteúdo da foto também pode revelar onde você está (fachadas, placas, documentos, a vista da janela).
+        A ferramenta não altera a imagem em si. Formatos como HEIC, WebP e RAW não são suportados.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Tudo roda no seu navegador. Código aberto no <a href="https://github.com/micdog22/limpa-exif">GitHub</a> · Licença MIT</p>
+  </footer>
+</body>
+</html>

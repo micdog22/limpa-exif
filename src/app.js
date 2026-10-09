@@ -109,7 +109,7 @@ function gpsAlert(report) {
       el('p', {}, `${where} (gravado no ${source}).`),
       el('p', {},
         el('a', { href: osmUrl(latitude, longitude), target: '_blank', rel: 'noopener noreferrer' }, 'Ver o local no mapa (OpenStreetMap)'),
-        ' — o link só abre se você clicar; nada é enviado automaticamente.'),
+        '. O link só abre se você clicar; nada é enviado automaticamente.'),
     );
   }
   if (report.gpsWithoutCoordinates) {
@@ -140,7 +140,7 @@ function renderResult(file, report) {
   if (report.removed.length) {
     removedInfo = el('details', { class: 'removed' },
       el('summary', {}, `Removido: ${report.removed.length} ${report.removed.length === 1 ? 'item' : 'itens'} (${formatBytes(Math.max(removedBytes, 0))} a menos)`),
-      listOf(report.removed.map((r) => `${r.label} — ${formatBytes(r.bytes)}`)));
+      listOf(report.removed.map((r) => `${r.label}: ${formatBytes(r.bytes)}`)));
   } else {
     removedInfo = el('p', { class: 'note' }, 'Nada a remover: a cópia é igual ao original.');
   }

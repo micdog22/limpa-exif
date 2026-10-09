@@ -1,4 +1,4 @@
-# Limpa EXIF — remova a localização e outros metadados das suas fotos (HTML + JavaScript)
+# Limpa EXIF: remova a localização e outros metadados das suas fotos (HTML + JavaScript)
 
 Fotos tiradas no celular costumam carregar as coordenadas de GPS de onde foram feitas, o modelo do aparelho, a data e a hora, o programa usado e às vezes até o nome do dono e o número de série da câmera. Quem vende algo em site de anúncios, manda foto por e-mail ou compartilha o arquivo original pode estar contando, sem querer, onde mora.
 
@@ -78,4 +78,4 @@ Issues e pull requests são bem-vindos.
 
 ## Licença
 
-MIT — veja [LICENSE](LICENSE).
+MIT. Veja [LICENSE](LICENSE).
